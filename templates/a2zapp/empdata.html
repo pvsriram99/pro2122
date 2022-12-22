@@ -1,0 +1,40 @@
+{%extends 'a2zapp/base.html'%}
+{%block body_block%}
+{%load static%}
+ <link rel="stylesheet" href="{%static 'css/styles.css'%}">
+<br>
+<br>
+<center>
+  <h3> Employee Data</h3>
+<table border="3px";>
+  <thead>
+  <th>Emp Name </th>
+  <th>Emp ID </th>
+  <th>Designation </th>
+  <th>Date of Join </th>
+  <th>Department </th>
+  <th>Salary Package </th>
+  <th>Experience </th>
+  <th>HR Section </th>
+
+  </thead>
+  {%for i in data%}
+<tr>
+  <td>{{i.EmpName}}</td>
+  <td>{{i.EmpId}}</td>
+  <td>{{i.Designation}}</td>
+  <td>{{i.Dateofjoin}}</td>
+  <td>{{i.Department}}</td>
+  <td>{{i.Salary}}</td>
+  <td>{{i.Experience}}</td>
+  <td><a href="/update/{{i.id}}">Update</a> | <a href="/delete/{{i.id}}">Delete</a> </td>
+</tr>
+  {%endfor%}
+</table>
+
+  </center>
+<br>
+<a href="/empform"><button type="button" class="btn btn-success btn-lg">ADD EMPLOYEE</button></a>
+<a href="/hrmanager"><button type="button" class="btn btn-success btn-lg">Back to HR Manager</button></a>
+
+{%endblock%}

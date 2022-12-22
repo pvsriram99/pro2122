@@ -1,0 +1,24 @@
+{%extends 'a2zapp/base.html'%}
+{%block body_block%}
+{%load static%}
+
+<link rel="stylesheet" href="{%static 'css/styles.css'%}">
+<br>
+<br>
+<h2>Occation</h2>
+<center>
+<table border="2px";>
+
+    {%for i in form%}
+    <tr>
+        <td>{{i.occation}}</td>
+
+
+    </tr>
+</table>
+
+    </center>
+<a href="/holcal"><button>Calender Holidays</button></a>
+ {%endfor%}
+
+{%endblock%}

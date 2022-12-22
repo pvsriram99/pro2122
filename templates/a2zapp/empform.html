@@ -1,0 +1,13 @@
+{%extends 'a2zapp/base.html'%}
+{%block body_block%}
+{%load static%}
+ <link rel="stylesheet" href="{%static 'css/styles.css'%}">
+<br>
+  <form method="POST">
+    {%csrf_token%}
+     {{form.as_p}}
+
+     <a href="/empdata"><button>Submit</button></a>
+   </form>
+
+{%endblock%}
