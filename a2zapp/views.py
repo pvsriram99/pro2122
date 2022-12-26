@@ -1,7 +1,10 @@
+import csv
+
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from a2zapp.forms import empform, newsform, calenderform
 from a2zapp.models import empmodel, news, calender
+from django.http import HttpResponse
 
 # Create your views here.
 def base(request):
@@ -60,3 +63,13 @@ def calfrm(request):
 def holcal(request):
     hol=calender.objects.all()
     return render(request, 'a2zapp/holidaycalender.html', {'key': hol})
+def getfile(request):
+    response = HttpResponse(content_type='text/csv')
+    response['content_Disposition'] = 'attachment; filename="employee.csv'
+    employees = empmodel.objects.all()
+    writer = csv.writer(response)
+    writer.writerow(['EMPNAME', 'EMPID', 'DESIGNATION', 'DATEOFJOIN', 'DEPARTMENT', 'SALARY', 'EXPERIENCE'])
+    for i in employees:
+        writer.writerow([i.EmpName, i.EmpId, i.Designation, i.Dateofjoin, i.Department, i.Salary, i.Experience])
+    return response
+

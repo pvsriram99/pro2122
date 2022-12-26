@@ -31,6 +31,7 @@ urlpatterns = [
     path('addnews/', views.newsfrm),
     path('latestnews/', views.latestnews),
     path('addholiday/', views.calfrm),
-    path('holcal/', views.holcal)
+    path('holcal/', views.holcal),
+    path('csv/', views.getfile)
 
 ]
